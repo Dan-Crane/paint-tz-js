@@ -8,7 +8,8 @@ let dragging = false
 let dragStartLocation
 let snapshot
 
-
+let x 
+let y 
 
 canvas.width = width
 canvas.height = 500
@@ -58,14 +59,24 @@ function pencilMode (){
 }
 
 function pencilStart (event) {
+  let x = event.offsetX;
+  let y = event.offsetY;
+  ctx.strokeStyle = color
+  ctx.lineJoin = 'round'
+  ctx.lineCap = "round"
+  ctx.moveTo (x,y);
+  console.log(ctx.moveTo (x,y))
+
   canvas.addEventListener('mousemove', pencilDraw)
 }
 
 function pencilDraw (e) {
-  let x = e.offsetX
-  let y = e.offsetY
-  ctx.fillStyle = color
-  ctx.fillRect(x, y, 6, 6)
+  let x = e.offsetX;
+  let y = e.offsetY;
+  console.log(x, y)
+  ctx.lineTo (x,y)
+  ctx.lineWidth = 4;
+  ctx.stroke()
 }
 
 function pencilStop(e) {
@@ -113,7 +124,7 @@ function drawLine(position){
   ctx.beginPath()
   ctx.moveTo(dragStartLocation.x, dragStartLocation.y)
   ctx.lineTo(position.x, position.y)
-  ctx.lineWidth = 6;
+  ctx.lineWidth = 4;
   ctx.strokeStyle = color
   ctx.stroke()
 }
@@ -139,17 +150,12 @@ function erasetStart (event) {
 function erasetDraw (e) {
   let x = e.offsetX
   let y = e.offsetY
-  ctx.clearRect(x, y, 4, 4)
+  ctx.clearRect(x, y, 6, 6)
 }
 
 function erasetStop(e) {
   canvas.removeEventListener('mousemove', erasetDraw)
 }
-
-// PredFn helpers
-let isPensil = mode => mode === Status.isPencil
-let isLine = mode => mode === Status.isLine
-let isClear = mode => mode === Status.isClear
 
 // remove listeners
 function removeListeners() {
