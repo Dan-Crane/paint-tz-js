@@ -8,9 +8,6 @@ let dragging = false
 let dragStartLocation
 let snapshot
 
-let x 
-let y 
-
 canvas.width = width
 canvas.height = 500
 
@@ -73,7 +70,6 @@ function pencilStart (event) {
 function pencilDraw (e) {
   let x = e.offsetX;
   let y = e.offsetY;
-  console.log(x, y)
   ctx.lineTo (x,y)
   ctx.lineWidth = 4;
   ctx.stroke()
@@ -144,6 +140,8 @@ function erasetMode (){
 }
 
 function erasetStart (event) {
+
+  
   canvas.addEventListener('mousemove', erasetDraw)
 }
 
@@ -151,6 +149,7 @@ function erasetDraw (e) {
   let x = e.offsetX
   let y = e.offsetY
   ctx.clearRect(x, y, 6, 6)
+  
 }
 
 function erasetStop(e) {
