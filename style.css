@@ -1,0 +1,50 @@
+[class^="icon-"], [class*=" icon-"] {
+  height: 20px;
+  width: 20px;
+  display: inline-block; 
+  fill: currentColor; 
+}
+
+/* mode btn */
+.pencil-mode {
+  display: flex;
+  padding: 8px 4px;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.pencil-mode label{
+  width: 100%;
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pencil-mode label svg{
+  cursor: pointer;
+}
+
+.pencil-mode label input{
+  margin: 0;
+  padding: 10px;
+  position: relative;
+}
+.pencil-mode label input::before{
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.pencil-mode__color{
+  position: relative;
+  margin: 0;
+}
+
+/* canvas */
+.canvas{
+  /* width: 100%; */
+  /* height: 500px; */
+  overflow: hidden;
+}
