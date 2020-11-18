@@ -62,7 +62,6 @@ function pencilStart (event) {
   ctx.lineJoin = 'round'
   ctx.lineCap = "round"
   ctx.moveTo (x,y);
-  console.log(ctx.moveTo (x,y))
 
   canvas.addEventListener('mousemove', pencilDraw)
 }
@@ -140,16 +139,13 @@ function erasetMode (){
 }
 
 function erasetStart (event) {
-
-  
   canvas.addEventListener('mousemove', erasetDraw)
 }
 
 function erasetDraw (e) {
   let x = e.offsetX
   let y = e.offsetY
-  ctx.clearRect(x, y, 6, 6)
-  
+  ctx.clearRect(x-4, y-4, 8, 8)
 }
 
 function erasetStop(e) {
